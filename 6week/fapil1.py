@@ -14,9 +14,11 @@ from fastapi import Form
 async def read_from(name: str = Form(...), studentcode: str = Form(...), major: str = Form(...)):
     return {"msg": f"{major} {name}님 ({studentcode}) 반갑습니다."}
 
-from fastapi.staticfiles import StaticFiles
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run(app, host='127.0.0.1', port=8000, log_level="info")
+    
+
+from fastapi.staticfiles import StaticFiles
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
